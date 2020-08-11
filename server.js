@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-
+const {addNewUser, handleAddExercise} = require('./controller');
 const cors = require('cors')
 
 // const mongoose = require('mongoose')
@@ -17,6 +17,10 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
+
+app.post('/api/exercise/new-user', addNewUser);
+
+app.post('/api/exercise/add', handleAddExercise);
 
 
 // Not found middleware
