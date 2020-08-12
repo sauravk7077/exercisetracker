@@ -1,7 +1,12 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const {addNewUser, handleAddExercise} = require('./controller');
+const {
+  addNewUser,
+  handleAddExercise,
+  handleGetUsers,
+  handleGetLog
+} = require('./controller');
 const cors = require('cors')
 
 // const mongoose = require('mongoose')
@@ -22,6 +27,9 @@ app.post('/api/exercise/new-user', addNewUser);
 
 app.post('/api/exercise/add', handleAddExercise);
 
+app.get('/api/exercise/users', handleGetUsers);
+
+app.get('/api/exercise/logs', handleGetLog);
 
 // Not found middleware
 app.use((req, res, next) => {
